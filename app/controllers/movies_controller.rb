@@ -50,8 +50,5 @@ class MoviesController < ApplicationController
   end
   
   
-  def sort_order(default)
-      "#{params[:d] == 'down' ? 'DESC' : 'ASC'}"
-  end
-
+ 
 end
