@@ -10,6 +10,8 @@ class MoviesController < ApplicationController
     # will render app/views/movies/show.<extension> by default
     
   end
+  
+
 
   def index
     @movies = Movie.order(params[:sort])
@@ -53,5 +55,20 @@ class MoviesController < ApplicationController
     flash[:warning] = "'#{params[:search_terms]}' was not found in TMDb."
   redirect_to movies_path
   end
+  
+  
+  def same_director
+    @movie = Movie.find(params[:id])
+    director_name = @movie.director
+    
+    if not director_name or director_name.empty?
+      flash[:notice] = %Q{'#{@movie.title}' has no director info}
+      redirect_to movies_path
+    else
+      @movie = Movie.find_all_by_director director_name
+      flash[:notice] = %Q{There are #{@movies.size} movie(s) with "#{director_name}" as director}
+    end
+  end
+  
  
 end

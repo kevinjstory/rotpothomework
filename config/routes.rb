@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   
   post '/movies/search_tmdb'
   
+  
+  get 'movies/:id/same_director' => 'movies#same_director', :as => :same_director
+  
   # Example resource route with options:
   #   resources :products do
   #     member do
