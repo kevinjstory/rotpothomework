@@ -7,6 +7,7 @@
       %th{:class=>@title_header, :id=> "title_header"}= link_to "Movie Title", :sort => "title"
       %th Rating
       %th{:class=>@release_date_header, :id=> "release_date_header"}= link_to "Release Date", :sort => "release_date"
+      %th Director
       %th More Info
   %tbody
     - @movies.each do |movie|
@@ -14,6 +15,7 @@
         %td= movie.title 
         %td= movie.rating
         %td= movie.release_date
+        %td= movie.director
         %td= link_to "More about #{movie.title}", movie_path(movie)
 
 = link_to 'Add new movie', new_movie_path
